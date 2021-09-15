@@ -224,6 +224,8 @@
         const suitArray = [firstCardSuit, secondCardSuit, thirdCardSuit, fourthCardSuit];
 
         let abortFunction = false;
+        
+        // check that four card numbers and four suits are selected
         for (i=0; i<4; i++){
             if (cardArray[i] < 2 || suitArray[i] === -1){
                 window.alert("Please select four cards and suits")
@@ -236,8 +238,6 @@
             return;
         }
 
-        // TODO add a check that four card values and suits are selected
-
         // the calculated fifth card suit is the same as the first card
         let fifthCardSuit = suitNumberToString(firstCardSuit);
         const first = cardValue(firstCardNumber, firstCardSuit);
@@ -245,7 +245,22 @@
         const third = cardValue(thirdCardNumber, thirdCardSuit);
         const fourth = cardValue(fourthCardNumber, fourthCardSuit);
 
-        // TODO check that two of the same cards are not selected (they do not have the same value)
+        const valueArray = [first, second, third, fourth]
+
+        // check that four different cards are selected
+
+        for (i=0; i<3; i++){
+            for (j=i+1; j<4; j++){
+                if (valueArray[i] === valueArray[j]){
+                    window.alert("Please select four different cards");
+                    abortFunction = true;
+                }
+            }
+        }
+
+        if (abortFunction){
+            return;
+        }
 
         console.log("second, third, and fourth card values: " + second + ", " + third + ", " + fourth);
 
