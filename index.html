@@ -33,7 +33,7 @@
             <div class="suitInput">
                 <span>Suit:&nbsp;</span>
                 <button id="0-20" onClick="selectSuit(event, 0, 20)">&clubs;</button>
-                <button id="0-21" class="red" onClick="selectSuit(event, 0, 21)" >&diams;</button>
+                <button id="0-21" class="red" onClick="selectSuit(event, 0, 21)">&diams;</button>
                 <button id="0-22" class="red" onClick="selectSuit(event, 0, 22)">&hearts;</button>
                 <button id="0-23" onClick="selectSuit(event, 0, 23)">&spades;</button>
             </div>
@@ -59,11 +59,11 @@
             <div class="suitInput">
                 <span>Suit:&nbsp;</span>
                 <button id="1-20" onClick="selectSuit(event, 1, 20)">&clubs;</button>
-                <button id="1-21" class="red" onClick="selectSuit(event, 1, 21)" >&diams;</button>
+                <button id="1-21" class="red" onClick="selectSuit(event, 1, 21)">&diams;</button>
                 <button id="1-22" class="red" onClick="selectSuit(event, 1, 22)">&hearts;</button>
                 <button id="1-23" onClick="selectSuit(event, 1, 23)">&spades;</button>
             </div>
-        </div>    
+        </div>
 
         <div class="input" id="inputTwo">
             <div class="info">3rd Card:&nbsp;</div>
@@ -85,11 +85,11 @@
             <div class="suitInput">
                 <span>Suit:&nbsp;</span>
                 <button id="2-20" onClick="selectSuit(event, 2, 20)">&clubs;</button>
-                <button id="2-21" class="red" onClick="selectSuit(event, 2, 21)" >&diams;</button>
+                <button id="2-21" class="red" onClick="selectSuit(event, 2, 21)">&diams;</button>
                 <button id="2-22" class="red" onClick="selectSuit(event, 2, 22)">&hearts;</button>
                 <button id="2-23" onClick="selectSuit(event, 2, 23)">&spades;</button>
             </div>
-        </div>    
+        </div>
 
         <div class="input" id="inputThree">
             <div class="info">4th Card:&nbsp;</div>
@@ -111,11 +111,11 @@
             <div class="suitInput">
                 <span>Suit:&nbsp;</span>
                 <button id="3-20" onClick="selectSuit(event, 3, 20)">&clubs;</button>
-                <button id="3-21" class="red" onClick="selectSuit(event, 3, 21)" >&diams;</button>
+                <button id="3-21" class="red" onClick="selectSuit(event, 3, 21)">&diams;</button>
                 <button id="3-22" class="red" onClick="selectSuit(event, 3, 22)">&hearts;</button>
                 <button id="3-23" onClick="selectSuit(event, 3, 23)">&spades;</button>
             </div>
-        </div>    
+        </div>
 
         <br>
         <div class="btn">
@@ -133,12 +133,12 @@
 
 <script>
     window.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('cardForm').addEventListener('submit', (event) => {
-        event.preventDefault();
+        document.getElementById('cardForm').addEventListener('submit', (event) => {
+            event.preventDefault();
         })
     });
 
-    function select(event, selectionNumber, cardValue){
+    function select(event, selectionNumber, cardValue) {
         event.stopPropagation();
         // clear prior selection
         clearSelection(selectionNumber, 2, 14);
@@ -146,7 +146,7 @@
         highlightSelection(selectionNumber, cardValue);
     }
 
-    function selectSuit(event, selectionNumber, suit){
+    function selectSuit(event, selectionNumber, suit) {
         event.stopPropagation();
         // clear prior selection
         clearSelection(selectionNumber, 20, 23);
@@ -156,7 +156,7 @@
 
 
     // helper function to wipe the CSS from the card selection
-    function clearSelection(selection, begin, end){
+    function clearSelection(selection, begin, end) {
         for (i = begin; i <= end; i++) {
             let element = selection + "-" + i.toString();
             console.log(element);
@@ -164,17 +164,17 @@
         }
     }
 
-    function highlightSelection(numberSelect, valueSelect){
+    function highlightSelection(numberSelect, valueSelect) {
         const selectString = numberSelect + "-" + valueSelect;
         const element = document.getElementById(selectString);
         element.classList.add("selected");
     }
 
     // helper function to find the card value, input is 0, 1, 2, or 3
-    function getCard(card){
+    function getCard(card) {
         let returnValue = 0;
-        for (i=2; i<=14; i++){
-            if (document.getElementById(card + "-" + i).classList.contains("selected")){
+        for (i = 2; i <= 14; i++) {
+            if (document.getElementById(card + "-" + i).classList.contains("selected")) {
                 returnValue = i;
                 console.log("card " + card + " value: " + returnValue);
             }
@@ -183,10 +183,10 @@
     }
 
     // helper function to find the card value, input is 0, 1, 2, or 3
-    function getSuit(card){
+    function getSuit(card) {
         let returnSuit = -1;
-        for (i=20; i<=23; i++){
-            if (document.getElementById(card + "-" + i).classList.contains("selected")){
+        for (i = 20; i <= 23; i++) {
+            if (document.getElementById(card + "-" + i).classList.contains("selected")) {
                 returnSuit = i % 10;
                 console.log("card " + card + " suit: " + returnSuit)
             }
@@ -195,15 +195,15 @@
     }
 
     // helper function to convert suit number to the corresponding string
-    function suitNumberToString(suitNumber){
+    function suitNumberToString(suitNumber) {
         let returnSuitString = "clubs";
-        if (suitNumber === 1){
+        if (suitNumber === 1) {
             returnSuitString = "diamonds";
         }
-        if (suitNumber === 2){
+        if (suitNumber === 2) {
             returnSuitString = "hearts";
         }
-        if (suitNumber === 3){
+        if (suitNumber === 3) {
             returnSuitString = "spades";
         }
         return returnSuitString;
@@ -224,17 +224,17 @@
         const suitArray = [firstCardSuit, secondCardSuit, thirdCardSuit, fourthCardSuit];
 
         let abortFunction = false;
-        
+
         // check that four card numbers and four suits are selected
-        for (i=0; i<4; i++){
-            if (cardArray[i] < 2 || suitArray[i] === -1){
+        for (i = 0; i < 4; i++) {
+            if (cardArray[i] < 2 || suitArray[i] === -1) {
                 window.alert("Please select four cards and suits")
                 i = 3;
                 abortFunction = true;
             }
         }
 
-        if (abortFunction){
+        if (abortFunction) {
             return;
         }
 
@@ -249,16 +249,16 @@
 
         // check that four different cards are selected
 
-        for (i=0; i<3; i++){
-            for (j=i+1; j<4; j++){
-                if (valueArray[i] === valueArray[j]){
+        for (i = 0; i < 3; i++) {
+            for (j = i + 1; j < 4; j++) {
+                if (valueArray[i] === valueArray[j]) {
                     window.alert("Please select four different cards");
                     abortFunction = true;
                 }
             }
         }
 
-        if (abortFunction){
+        if (abortFunction) {
             return;
         }
 
@@ -332,7 +332,8 @@
         fifthCard += fifthCardSuit;
         document.getElementById("IntroText").innerHTML = "Reading your mind, the next card is the...";
         document.getElementById("FifthCard").innerHTML = fifthCard;
-        if (fifthCardSuit === "hearts" || fifthCardSuit === "diamonds"){
+        document.getElementById("FifthCard").classList.remove("red");
+        if (fifthCardSuit === "hearts" || fifthCardSuit === "diamonds") {
             document.getElementById("FifthCard").classList.add("red");
         }
     }
@@ -379,7 +380,7 @@
         border-radius: 4px;
     }
 
-    header {      
+    header {
         display: flex;
         justify-content: center;
     }
@@ -391,7 +392,7 @@
         margin-left: 5%;
         width: 90%;
     }
-    
+
     /* for tablet */
     @media only screen and (min-width: 600px) {
         form {
@@ -408,7 +409,7 @@
             margin-left: 25%;
         }
 
-        @media (hover:hover){
+        @media (hover:hover) {
             button:hover {
                 box-shadow: 0px 0px 3px 3px lime;
             }
@@ -417,7 +418,7 @@
                 box-shadow: 0px 0px 3px 3px lime;
             }
         }
-    }   
+    }
 
     .input {
         display: grid;
@@ -432,7 +433,8 @@
     }
 
     #inputZero {
-        background-color: rgb(150, 190, 255);    }
+        background-color: rgb(150, 190, 255);
+    }
 
     #inputOne {
         background-color: rgb(160, 195, 255);
@@ -447,22 +449,22 @@
     }
 
     .row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
-}
+    .column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+    }
 
-.info {
-    grid-area: info;
-}
+    .info {
+        grid-area: info;
+    }
 
     .cardInput {
         display: inline-flex;
@@ -471,7 +473,7 @@
         flex-wrap: wrap;
     }
 
-    .suitInput{
+    .suitInput {
         display: inline-flex;
         justify-self: center;
         grid-area: right;
@@ -492,14 +494,13 @@
     }
 
     .submit-button {
-        background-color:rgb(130, 255, 255);
+        background-color: rgb(130, 255, 255);
         border-radius: 4px;
     }
-    
+
     .selected {
         background-color: lime;
     }
-
 </style>
 
 </html>
