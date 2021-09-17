@@ -9,9 +9,12 @@
 </head>
 
 <body>
-    <header>
-        <h1>Card Mind Reader</h1>
-    </header>
+    <div class="heading">
+    Card Mind Reader
+    </div>
+    <div class="instructions grey">  
+    Show me four cards and I predict the next one
+    </div>
     <div id="cardForm">
         <div class="input" id="inputZero">
             <div class="info">1st Card:&nbsp;</div>
@@ -117,15 +120,16 @@
             </div>
         </div>
 
-        <br>
+        <div class="instructions">
+            The 5th hidden card is the ...
+        </div>
         <div class="btn">
             <input class="submit-button" type="submit" value="Read My Mind" onClick="getFifthCard()">
         </div>
     </div>
-    <br>
-    <div class="answer">
+    <!-- <div class="answer">
         <h3 id="IntroText"></h3>
-    </div>
+    </div> -->
     <div class="answer">
         <h2 id="FifthCard"></h2>
     </div>
@@ -330,7 +334,7 @@
         }
         fifthCard += ' of ';
         fifthCard += fifthCardSuit;
-        document.getElementById("IntroText").innerHTML = "Reading your mind, the next card is the...";
+        // document.getElementById("IntroText").innerHTML = "Reading your mind, the next card is the...";
         document.getElementById("FifthCard").innerHTML = fifthCard;
         document.getElementById("FifthCard").classList.remove("red");
         if (fifthCardSuit === "hearts" || fifthCardSuit === "diamonds") {
@@ -371,8 +375,10 @@
 <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
-        background-image: linear-gradient(rgb(130, 255, 255), white);
-        background-repeat: no-repeat;
+        /* background-image: linear-gradient(rgb(130, 255, 255), white); */
+        /* background-repeat: no-repeat; */
+        background-color: black;
+        color: whitesmoke;
     }
 
     button {
@@ -380,9 +386,12 @@
         border-radius: 4px;
     }
 
-    header {
-        display: flex;
-        justify-content: center;
+    h2 {
+        color: rgb(255, 255, 135)
+    }
+
+    h5 {
+        color: rgb(200, 200, 200);
     }
 
     /* default for mobile view */
@@ -411,11 +420,11 @@
 
         @media (hover:hover) {
             button:hover {
-                box-shadow: 0px 0px 3px 3px lime;
+                box-shadow: 0px 0px 3px 3px grey;
             }
 
             .submit-button:hover {
-                box-shadow: 0px 0px 3px 3px lime;
+                box-shadow: 0px 0px 3px 3px grey;
             }
         }
     }
@@ -426,26 +435,47 @@
         grid-template-rows: auto;
         grid-template-areas: ". info left right .";
         align-items: center;
-        border-radius: 20px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
         padding: 5px;
         border: 5px;
         margin: 5px;
+        color: black;
+    }
+
+    .heading {
+        display: flex;
+        justify-content: center;
+        height: 30px;
+        font-size: 30px;
+        color:rgb(255, 255, 135);
+    }
+
+    .instructions {
+        display: flex;
+        justify-content: center;
+        height: 20px;
+        margin: 15px;
     }
 
     #inputZero {
-        background-color: rgb(150, 190, 255);
+        /* background-color: rgb(150, 190, 255); */
+        background-color: lightskyblue;
     }
 
     #inputOne {
-        background-color: rgb(160, 195, 255);
+        /* background-color: rgb(160, 195, 255); */
+        background-color: lightskyblue;
     }
 
     #inputTwo {
-        background-color: rgb(170, 205, 255);
+        /* background-color: rgb(170, 205, 255); */
+        background-color: lightskyblue;
     }
 
     #inputThree {
-        background-color: rgb(180, 210, 255);
+        /* background-color: rgb(180, 210, 255); */
+        background-color: lightskyblue;
     }
 
     .row {
@@ -493,9 +523,15 @@
         color: red;
     }
 
+    .grey {
+        color: rgb(200, 200, 200)
+    }
+
+
     .submit-button {
-        background-color: rgb(130, 255, 255);
+        background-color: rgb(175, 255, 175);
         border-radius: 4px;
+        height: 30px;
     }
 
     .selected {
