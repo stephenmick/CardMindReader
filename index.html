@@ -10,10 +10,10 @@
 
 <body>
     <div class="heading">
-    Card Mind Reader
+    Playing Card Mind Reader
     </div>
     <div class="instructions grey">  
-    Show me four cards and I predict the next one
+    Draw five cards. Show me four and I predict the last!
     </div>
     <div id="cardForm">
         <div class="input" id="inputZero">
@@ -273,6 +273,22 @@
         let cardDistance = getDistance(second, third, fourth);
         let fifthCard = "";
         let fifthCardNumber = firstCardNumber + cardDistance;
+        
+        // input error checking
+        // check if the predicted card is the same as an input card, which means an input is incorrect   
+        const fifthCardValue = cardValue(fifthCardNumber, firstCardSuit);
+        for (i= 0; i < 4; i++){
+            if (valueArray[i] === fifthCardValue){
+                window.alert("Please check your inputs for errors");
+                abortFunction = true;
+            }
+        }
+        
+        if (abortFunction) {
+            return;
+        }
+        
+        // set the display for the fifth card
         switch (fifthCardNumber) {
             case 2:
                 fifthCard = "2";
@@ -332,9 +348,12 @@
                 fifthCard = "7";
                 break;
         }
+
+
+
         fifthCard += ' of ';
         fifthCard += fifthCardSuit;
-        // document.getElementById("IntroText").innerHTML = "Reading your mind, the next card is the...";
+
         document.getElementById("FifthCard").innerHTML = fifthCard;
         document.getElementById("FifthCard").classList.remove("red");
         if (fifthCardSuit === "hearts" || fifthCardSuit === "diamonds") {
@@ -377,8 +396,7 @@
         font-family: Arial, Helvetica, sans-serif;
         /* background-image: linear-gradient(rgb(130, 255, 255), white); */
         /* background-repeat: no-repeat; */
-        background-color: black;
-        color: whitesmoke;
+        background-color: tan;
     }
 
     button {
@@ -387,11 +405,11 @@
     }
 
     h2 {
-        color: rgb(255, 255, 135)
+        color: black;
     }
 
     h5 {
-        color: rgb(200, 200, 200);
+        color: black;
     }
 
     /* default for mobile view */
@@ -448,7 +466,7 @@
         justify-content: center;
         height: 30px;
         font-size: 30px;
-        color:rgb(255, 255, 135);
+        color: sienna;
     }
 
     .instructions {
@@ -460,22 +478,22 @@
 
     #inputZero {
         /* background-color: rgb(150, 190, 255); */
-        background-color: lightskyblue;
+        background-color: rgb(255, 225, 190);
     }
 
     #inputOne {
         /* background-color: rgb(160, 195, 255); */
-        background-color: lightskyblue;
+        background-color: rgb(255, 225, 190);
     }
 
     #inputTwo {
         /* background-color: rgb(170, 205, 255); */
-        background-color: lightskyblue;
+        background-color: rgb(255, 225, 190);
     }
 
     #inputThree {
         /* background-color: rgb(180, 210, 255); */
-        background-color: lightskyblue;
+        background-color: rgb(255, 225, 190);
     }
 
     .row {
@@ -524,9 +542,8 @@
     }
 
     .grey {
-        color: rgb(200, 200, 200)
+        color: rgb(240, 240, 240);
     }
-
 
     .submit-button {
         background-color: rgb(175, 255, 175);
@@ -535,7 +552,7 @@
     }
 
     .selected {
-        background-color: lime;
+        background-color: yellow;
     }
 </style>
 
