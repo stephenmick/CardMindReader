@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Mind Reader</title>
+</head>
+
+<body>
+    <div class="heading">
+    Playing Card Mind Reader
+    </div>
+    <div class="instructions grey">  
+    Input five cards and I show how to order them
+    </div>
+    <div id="cardForm">
+        <div class="input" id="inputZero">
+            <div class="info">&nbsp;</div>
+            <div class="cardInput">
+                <button id="0-2" onClick="select(event, 0, 2)">2</button>
+                <button id="0-3" onClick="select(event, 0, 3)">3</button>
+                <button id="0-4" onClick="select(event, 0, 4)">4</button>
+                <button id="0-5" onClick="select(event, 0, 5)">5</button>
+                <button id="0-6" onClick="select(event, 0, 6)">6</button>
+                <button id="0-7" onClick="select(event, 0, 7)">7</button>
+                <button id="0-8" onClick="select(event, 0, 8)">8</button>
+                <button id="0-9" onClick="select(event, 0, 9)">9</button>
+                <button id="0-10" onClick="select(event, 0, 10)">10</button>
+                <button id="0-11" onClick="select(event, 0, 11)">J</button>
+                <button id="0-12" onClick="select(event, 0, 12)">Q</button>
+                <button id="0-13" onClick="select(event, 0, 13)">K</button>
+                <button id="0-14" onClick="select(event, 0, 14)">A</button>
+            </div>
+            <div class="suitInput">
+                <span>&nbsp;</span>
+                <button id="0-20" onClick="selectSuit(event, 0, 20)">&clubs;</button>
+                <button id="0-21" class="red" onClick="selectSuit(event, 0, 21)">&diams;</button>
+                <button id="0-22" class="red" onClick="selectSuit(event, 0, 22)">&hearts;</button>
+                <button id="0-23" onClick="selectSuit(event, 0, 23)">&spades;</button>
+            </div>
+        </div>
+
+        <div class="input" id="inputOne">
+            <div class="info">&nbsp;</div>
+            <div class="cardInput">
+                <button id="1-2" onClick="select(event, 1, 2)">2</button>
+                <button id="1-3" onClick="select(event, 1, 3)">3</button>
+                <button id="1-4" onClick="select(event, 1, 4)">4</button>
+                <button id="1-5" onClick="select(event, 1, 5)">5</button>
+                <button id="1-6" onClick="select(event, 1, 6)">6</button>
+                <button id="1-7" onClick="select(event, 1, 7)">7</button>
+                <button id="1-8" onClick="select(event, 1, 8)">8</button>
+                <button id="1-9" onClick="select(event, 1, 9)">9</button>
+                <button id="1-10" onClick="select(event, 1, 10)">10</button>
+                <button id="1-11" onClick="select(event, 1, 11)">J</button>
+                <button id="1-12" onClick="select(event, 1, 12)">Q</button>
+                <button id="1-13" onClick="select(event, 1, 13)">K</button>
+                <button id="1-14" onClick="select(event, 1, 14)">A</button>
+            </div>
+            <div class="suitInput">
+                <span>&nbsp;</span>
+                <button id="1-20" onClick="selectSuit(event, 1, 20)">&clubs;</button>
+                <button id="1-21" class="red" onClick="selectSuit(event, 1, 21)">&diams;</button>
+                <button id="1-22" class="red" onClick="selectSuit(event, 1, 22)">&hearts;</button>
+                <button id="1-23" onClick="selectSuit(event, 1, 23)">&spades;</button>
+            </div>
+        </div>
+
+        <div class="input" id="inputTwo">
+            <div class="info">&nbsp;</div>
+            <div class="cardInput">
+                <button id="2-2" onClick="select(event, 2, 2)">2</button>
+                <button id="2-3" onClick="select(event, 2, 3)">3</button>
+                <button id="2-4" onClick="select(event, 2, 4)">4</button>
+                <button id="2-5" onClick="select(event, 2, 5)">5</button>
+                <button id="2-6" onClick="select(event, 2, 6)">6</button>
+                <button id="2-7" onClick="select(event, 2, 7)">7</button>
+                <button id="2-8" onClick="select(event, 2, 8)">8</button>
+                <button id="2-9" onClick="select(event, 2, 9)">9</button>
+                <button id="2-10" onClick="select(event, 2, 10)">10</button>
+                <button id="2-11" onClick="select(event, 2, 11)">J</button>
+                <button id="2-12" onClick="select(event, 2, 12)">Q</button>
+                <button id="2-13" onClick="select(event, 2, 13)">K</button>
+                <button id="2-14" onClick="select(event, 2, 14)">A</button>
+            </div>
+            <div class="suitInput">
+                <span>&nbsp;</span>
+                <button id="2-20" onClick="selectSuit(event, 2, 20)">&clubs;</button>
+                <button id="2-21" class="red" onClick="selectSuit(event, 2, 21)">&diams;</button>
+                <button id="2-22" class="red" onClick="selectSuit(event, 2, 22)">&hearts;</button>
+                <button id="2-23" onClick="selectSuit(event, 2, 23)">&spades;</button>
+            </div>
+        </div>
+
+        <div class="input" id="inputThree">
+            <div class="info">&nbsp;</div>
+            <div class="cardInput">
+                <button id="3-2" onClick="select(event, 3, 2)">2</button>
+                <button id="3-3" onClick="select(event, 3, 3)">3</button>
+                <button id="3-4" onClick="select(event, 3, 4)">4</button>
+                <button id="3-5" onClick="select(event, 3, 5)">5</button>
+                <button id="3-6" onClick="select(event, 3, 6)">6</button>
+                <button id="3-7" onClick="select(event, 3, 7)">7</button>
+                <button id="3-8" onClick="select(event, 3, 8)">8</button>
+                <button id="3-9" onClick="select(event, 3, 9)">9</button>
+                <button id="3-10" onClick="select(event, 3, 10)">10</button>
+                <button id="3-11" onClick="select(event, 3, 11)">J</button>
+                <button id="3-12" onClick="select(event, 3, 12)">Q</button>
+                <button id="3-13" onClick="select(event, 3, 13)">K</button>
+                <button id="3-14" onClick="select(event, 3, 14)">A</button>
+            </div>
+            <div class="suitInput">
+                <span>&nbsp;</span>
+                <button id="3-20" onClick="selectSuit(event, 3, 20)">&clubs;</button>
+                <button id="3-21" class="red" onClick="selectSuit(event, 3, 21)">&diams;</button>
+                <button id="3-22" class="red" onClick="selectSuit(event, 3, 22)">&hearts;</button>
+                <button id="3-23" onClick="selectSuit(event, 3, 23)">&spades;</button>
+            </div>
+        </div>
+
+        <div id="cardForm">
+            <div class="input" id="inputFour">
+                <div class="info">&nbsp;</div>
+                <div class="cardInput">
+                    <button id="4-2" onClick="select(event, 4, 2)">2</button>
+                    <button id="4-3" onClick="select(event, 4, 3)">3</button>
+                    <button id="4-4" onClick="select(event, 4, 4)">4</button>
+                    <button id="4-5" onClick="select(event, 4, 5)">5</button>
+                    <button id="4-6" onClick="select(event, 4, 6)">6</button>
+                    <button id="4-7" onClick="select(event, 4, 7)">7</button>
+                    <button id="4-8" onClick="select(event, 4, 8)">8</button>
+                    <button id="4-9" onClick="select(event, 4, 9)">9</button>
+                    <button id="4-10" onClick="select(event, 4, 10)">10</button>
+                    <button id="4-11" onClick="select(event, 4, 11)">J</button>
+                    <button id="4-12" onClick="select(event, 4, 12)">Q</button>
+                    <button id="4-13" onClick="select(event, 4, 13)">K</button>
+                    <button id="4-14" onClick="select(event, 4, 14)">A</button>
+                </div>
+                <div class="suitInput">
+                    <span>&nbsp;</span>
+                    <button id="4-20" onClick="selectSuit(event, 4, 20)">&clubs;</button>
+                    <button id="4-21" class="red" onClick="selectSuit(event, 4, 21)">&diams;</button>
+                    <button id="4-22" class="red" onClick="selectSuit(event, 4, 22)">&hearts;</button>
+                    <button id="4-23" onClick="selectSuit(event, 4, 23)">&spades;</button>
+                </div>
+            </div>
+
+        <div class="instructions">
+            Arrange the order of cards this way ...
+        </div>
+        <div class="btn">
+            <input class="submit-button" type="submit" value="Arrange!" onClick="arrange()">
+        </div>
+    </div>
+    <!-- <div class="answer">
+        <h3 id="IntroText"></h3>
+    </div> -->
+    <div class="answer">
+        <h2 id="FifthCard"></h2>
+    </div>
+</body>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('cardForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+        })
+    });
+
+    function select(event, selectionNumber, cardValue) {
+        event.stopPropagation();
+        // clear prior selection
+        clearSelection(selectionNumber, 2, 14);
+        // add current selection
+        highlightSelection(selectionNumber, cardValue);
+    }
+
+    function selectSuit(event, selectionNumber, suit) {
+        event.stopPropagation();
+        // clear prior selection
+        clearSelection(selectionNumber, 20, 23);
+        // add current selection
+        highlightSelection(selectionNumber, suit);
+    }
+
+
+    // helper function to wipe the CSS from the card selection
+    function clearSelection(selection, begin, end) {
+        for (i = begin; i <= end; i++) {
+            let element = selection + "-" + i.toString();
+            console.log(element);
+            document.getElementById(element).classList.remove("selected");
+        }
+    }
+
+    function highlightSelection(numberSelect, valueSelect) {
+        const selectString = numberSelect + "-" + valueSelect;
+        const element = document.getElementById(selectString);
+        element.classList.add("selected");
+    }
+
+    // helper function to find the card value, input is 0, 1, 2, or 3
+    function getCard(card) {
+        let returnValue = 0;
+        for (i = 2; i <= 14; i++) {
+            if (document.getElementById(card + "-" + i).classList.contains("selected")) {
+                returnValue = i;
+                console.log("card " + card + " value: " + returnValue);
+            }
+        }
+        return returnValue;
+    }
+
+    // helper function to find the card value, input is 0, 1, 2, or 3
+    function getSuit(card) {
+        let returnSuit = -1;
+        for (i = 20; i <= 23; i++) {
+            if (document.getElementById(card + "-" + i).classList.contains("selected")) {
+                returnSuit = i % 10;
+                console.log("card " + card + " suit: " + returnSuit)
+            }
+        }
+        return returnSuit;
+    }
+
+    // helper function to convert suit number to the corresponding string
+    function suitNumberToString(suitNumber) {
+        let returnSuitString = "clubs";
+        if (suitNumber === 1) {
+            returnSuitString = "diamonds";
+        }
+        if (suitNumber === 2) {
+            returnSuitString = "hearts";
+        }
+        if (suitNumber === 3) {
+            returnSuitString = "spades";
+        }
+        return returnSuitString;
+    }
+
+
+    function arrange() {
+        const firstCardNumber = getCard(0);
+        const firstCardSuit = getSuit(0);
+        const secondCardNumber = getCard(1);
+        const secondCardSuit = getSuit(1);
+        const thirdCardNumber = getCard(2);
+        const thirdCardSuit = getSuit(2);
+        const fourthCardNumber = getCard(3);
+        const fourthCardSuit = getSuit(3);
+        const fifthCardNumber = getCard(4);
+        const fifthCardSuit = getSuit(4);
+
+        const cardArray = [firstCardNumber, secondCardNumber, thirdCardNumber, fourthCardNumber, fifthCardNumber];
+        const suitArray = [firstCardSuit, secondCardSuit, thirdCardSuit, fourthCardSuit, fifthCardSuit];
+
+        let abortFunction = false;
+
+        // check that five card numbers and five suits are selected
+        for (i = 0; i < 5; i++) {
+            if (cardArray[i] < 2 || suitArray[i] === -1) {
+                window.alert("Please select four cards and suits")
+                i = 4;
+                abortFunction = true;
+            }
+        }
+
+        if (abortFunction) {
+            return;
+        }
+
+        // the calculated fifth card suit is the same as the first card
+        const first = cardValue(firstCardNumber, firstCardSuit);
+        const second = cardValue(secondCardNumber, secondCardSuit);
+        const third = cardValue(thirdCardNumber, thirdCardSuit);
+        const fourth = cardValue(fourthCardNumber, fourthCardSuit);
+        const fifth = cardValue(fifthCardNumber, fifthCardSuit);
+
+        const valueArray = [first, second, third, fourth, fifth]
+
+        // check that four different cards are selected
+
+        for (i = 0; i < 4; i++) {
+            for (j = i + 1; j < 5; j++) {
+                if (valueArray[i] === valueArray[j]) {
+                    window.alert("Please select four different cards");
+                    abortFunction = true;
+                }
+            }
+        }
+
+        if (abortFunction) {
+            return;
+        }
+
+        // initialize the card order
+        let cardA = -1;
+        let cardB = -1;
+        let cardC = -1;
+        let cardD = -1;
+        let cardHidden = -1;
+
+        // initialize distance between cardA and cardHidden
+        let distance = 0;
+
+        // first find two cards that have the same suit
+        for (i = 0; i < 4; i++) {
+            for (j = i + 1; j < 5; j++) {
+                if (suitArray[i] === suitArray[j]) {
+                    // figure out which card is cardHidden card and which is cardA
+                    let iNumber = cardArray[i];
+                    let jNumber = cardArray[j];
+                    // case when iNumber > jNumber and distance away is 6 or less
+                    if (iNumber > jNumber && (iNumber - jNumber <= 6)) {
+                        cardHidden = i;
+                        cardA = j;
+                        distance = iNumber - jNumber;
+                    }
+                    // case when jNumber > iNumber and distance away is 6 or less
+                    else if (jNumber > iNumber && (jNumber - iNumber <= 6)) {
+                        cardA = i;
+                        cardHidden = j;
+                        distance = jNumber - iNumber;
+                    }
+                    // otherwise it is a case that overlaps from A to 2
+                    else {
+                        // the larger number is cardA and the smaller cardHidden
+                        if (iNumber > jNumber) {
+                            cardA = i;
+                            cardHidden = j;
+                            distance = iNumber - jNumber - 11;
+                        }
+                        else {
+                            cardHidden = i;
+                            cardA = j;
+                            distance = jNumber - iNumber - 11;
+                        }
+                    }
+                    console.log("cardA: " + cardArray[cardA] + " of " + suitArray[cardA]);
+                    console.log("cardHidden: " + cardArray[cardHidden] + " of " + suitArray[cardHidden]);
+                    // exit this part of the for loop
+                   j = 4;
+                }
+            }
+        }
+
+        // TODO modify this part to order the cards
+
+        // find and order cardB cardC and cardD
+
+
+
+        /* the distance the fifth card is away from the first card is between 1 and 6
+        and based on the order of the second, third, and fourth cards*/
+        
+        // let cardDistance = getDistance(second, third, fourth);
+        // let fifthCard = "";
+        // let fifthCardNumber = firstCardNumber + cardDistance;
+        
+        
+        // set the display for the fifth card
+        switch (fifthCardNumber) {
+            case 2:
+                fifthCard = "2";
+                break;
+            case 3:
+                fifthCard = "3";
+                break;
+            case 4:
+                fifthCard = "4";
+                break;
+            case 5:
+                fifthCard = "5";
+                break;
+            case 6:
+                fifthCard = "6";
+                break;
+            case 7:
+                fifthCard = "7";
+                break;
+            case 8:
+                fifthCard = "8";
+                break;
+            case 9:
+                fifthCard = "9";
+                break;
+            case 10:
+                fifthCard = "10";
+                break;
+            case 11:
+                fifthCard = "J";
+                break;
+            case 12:
+                fifthCard = "Q";
+                break;
+            case 13:
+                fifthCard = "K";
+                break;
+            case 14:
+                fifthCard = "A";
+                break;
+            case 15:
+                fifthCard = "2";
+                break;
+            case 16:
+                fifthCard = "3";
+                break;
+            case 17:
+                fifthCard = "4";
+                break;
+            case 18:
+                fifthCard = "5";
+                break;
+            case 19:
+                fifthCard = "6";
+                break;
+            case 20:
+                fifthCard = "7";
+                break;
+        }
+
+
+
+        fifthCard += ' of ';
+        fifthCard += fifthCardSuit;
+
+        document.getElementById("FifthCard").innerHTML = fifthCard;
+        document.getElementById("FifthCard").classList.remove("red");
+        if (fifthCardSuit === "hearts" || fifthCardSuit === "diamonds") {
+            document.getElementById("FifthCard").classList.add("red");
+        }
+    }
+
+    // returns 1, 2, 3, 4, 5, or 6 based on the order of the given cards
+    function getDistance(alpha, beta, gamma) {
+        // cases when alpha is smallest
+        if (alpha < beta && alpha < gamma) {
+            if (beta < gamma) {
+                return 1;
+            }
+            else return 2;
+        }
+        // cases when alpha is biggest
+        if (alpha > beta && alpha > gamma) {
+            if (beta < gamma) {
+                return 5;
+            }
+            else return 6;
+        }
+        // other two cases when alpha is the middle size
+        if (beta < gamma) {
+            return 3;
+        }
+        // otherwise it's the final case
+        return 4;
+    }
+
+    function cardValue(number, suit) {
+        let returnCardValue = number * 10 + suit;
+        return returnCardValue;
+    }
+</script>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        /* background-image: linear-gradient(rgb(130, 255, 255), white); */
+        /* background-repeat: no-repeat; */
+        background-color: lightskyblue;
+    }
+
+    button {
+        margin: 1px;
+        border-radius: 4px;
+    }
+
+    h2 {
+        color: black;
+    }
+
+    h5 {
+        color: black;
+    }
+
+    /* default for mobile view */
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-left: 5%;
+        width: 90%;
+    }
+
+    /* for tablet */
+    @media only screen and (min-width: 600px) {
+        form {
+            width: 70%;
+            margin-left: 15%;
+        }
+    }
+
+
+    /* for desktop */
+    @media only screen and (min-width: 768px) {
+        form {
+            width: 50%;
+            margin-left: 25%;
+        }
+
+        @media (hover:hover) {
+            button:hover {
+                box-shadow: 0px 0px 3px 3px grey;
+            }
+
+            .submit-button:hover {
+                box-shadow: 0px 0px 3px 3px grey;
+            }
+        }
+    }
+
+    .input {
+        display: grid;
+        grid-template-columns: 1fr 1fr 4fr 4fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: ". info left right .";
+        align-items: center;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        padding: 5px;
+        border: 5px;
+        margin: 5px;
+        color: black;
+    }
+
+    .heading {
+        display: flex;
+        justify-content: center;
+        height: 30px;
+        font-size: 30px;
+        color: blue;
+    }
+
+    .instructions {
+        display: flex;
+        justify-content: center;
+        height: 20px;
+        margin: 15px;
+    }
+
+    #inputZero, #inputOne, #inputTwo, #inputThree, #inputFour{
+        background-color: rgb(190, 225, 255);
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+    }
+
+    .info {
+        grid-area: info;
+    }
+
+    .cardInput {
+        display: inline-flex;
+        justify-self: center;
+        grid-area: left;
+        flex-wrap: wrap;
+    }
+
+    .suitInput {
+        display: inline-flex;
+        justify-self: center;
+        grid-area: right;
+    }
+
+    .btn {
+        display: flex;
+        justify-content: center;
+    }
+
+    .answer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .grey {
+        color: grey;
+    }
+
+    .submit-button {
+        background-color: rgb(175, 175, 255);
+        border-radius: 4px;
+        height: 30px;
+    }
+
+    .selected {
+        background-color: yellow;
+    }
+</style>
+
+</html>
