@@ -330,12 +330,12 @@
                         if (iNumber > jNumber) {
                             cardA = i;
                             cardHidden = j;
-                            distance = iNumber - jNumber - 11;
+                            distance = jNumber - iNumber + 13;
                         }
                         else {
                             cardHidden = i;
                             cardA = j;
-                            distance = jNumber - iNumber - 11;
+                            distance = iNumber - jNumber + 13;
                         }
                     }
                     console.log("cardA: " + cardArray[cardA] + " of " + suitArray[cardA]);
@@ -346,92 +346,197 @@
             }
         }
 
-        // TODO modify this part to order the cards
+        let b = -1;
+        let c = -1;
+        let d = -1;
 
-        // find and order cardB cardC and cardD
+        // initialize cardB cardC and cardD
+        for (i = 0; i < 5; i++) {
+            if (i !== cardA && i !== cardHidden) {
+                if (b < 0) {
+                    b = i;
+                }
+                else if (c < 0) {
+                    c = i;
+                }
+                else {
+                    d = i;
+                }
+            }
+        }
+        console.log("****** cardA=" + cardA + " b=" + b + " c=" + c + " d=" + d + " cardHidden=" + cardHidden);
 
+        // order by size
+        let small = -1;
+        let middle = -1;
+        let large = -1;
+        if (valueArray[b] > valueArray[c] && valueArray[c] > valueArray[d]){
+            small = d;
+            middle = c;
+            large = b;
+        }
+        else if (valueArray[b] > valueArray[d] && valueArray[d] > valueArray[c]){
+            small = c;
+            middle = d;
+            large = b;
+        }
+        else if (valueArray[c] > valueArray[b] && valueArray[b] > valueArray[d]){
+            small = d;
+            middle = b;
+            large = c;
+        }
+        else if (valueArray[c] > valueArray[d] && valueArray[d] > valueArray[b]){
+            small = b;
+            middle = d;
+            large = c;
+        }
+        else if (valueArray[d] > valueArray[b] && valueArray[b] > valueArray[c]){
+            small = c;
+            middle = b;
+            large = d;
+        }
+        else {
+            small = b;
+            middle = c;
+            large = d;
+        }
+        console.log("small = " + small + " middle = " + middle + " large = " + large + " distance = " + distance);
 
-
-        /* the distance the fifth card is away from the first card is between 1 and 6
-        and based on the order of the second, third, and fourth cards*/
-        
-        // let cardDistance = getDistance(second, third, fourth);
-        // let fifthCard = "";
-        // let fifthCardNumber = firstCardNumber + cardDistance;
-        
-        
-        // set the display for the fifth card
-        switch (fifthCardNumber) {
+        // find the correct order of cardB cardC and cardD
+        switch (distance) {
+            case 1:
+                cardB = small;
+                cardC = middle;
+                cardD = large;
+                break;
             case 2:
-                fifthCard = "2";
+                cardB = small;
+                cardC = large;
+                cardD = middle;
                 break;
             case 3:
-                fifthCard = "3";
+                cardB = middle;
+                cardC = small;
+                cardD = large;
                 break;
             case 4:
-                fifthCard = "4";
+                cardB = middle;
+                cardC = large;
+                cardD = small;
                 break;
             case 5:
-                fifthCard = "5";
+                cardB = large;
+                cardC = small;
+                cardD = middle;
                 break;
             case 6:
-                fifthCard = "6";
+                cardB = large;
+                cardC = middle;
+                cardD = small;
+                break;
+        }
+
+        console.log("first card: " + cardDisplay(cardArray[cardA]) + " of " + suitDisplay(suitArray[cardA]));
+        console.log("second card: " + cardDisplay(cardArray[cardB]) + " of " + suitDisplay(suitArray[cardB]));
+        console.log("third card: " + cardDisplay(cardArray[cardC]) + " of " + suitDisplay(suitArray[cardC]));
+        console.log("fourth card: " + cardDisplay(cardArray[cardD]) + " of " + suitDisplay(suitArray[cardD]));
+        console.log("hidden card: " + cardDisplay(cardArray[cardHidden]) + " of " + suitDisplay(suitArray[cardHidden]));
+
+        // fifthCard += ' of ';
+        // fifthCard += fifthCardSuit;
+
+        // document.getElementById("FifthCard").innerHTML = fifthCard;
+        // document.getElementById("FifthCard").classList.remove("red");
+        // if (fifthCardSuit === "hearts" || fifthCardSuit === "diamonds") {
+        //     document.getElementById("FifthCard").classList.add("red");
+        // }
+    }
+
+    function suitDisplay(suitNumber){
+        let suit = "";
+        switch (suitNumber) {
+            case 0:
+                suit = "clubs";
+                break;
+            case 1:
+                suit = "diamonds";
+                break;
+            case 2:
+                suit = "hearts";
+                break;
+            case 3:
+                suit = "spades";
+                break;
+        }
+        return suit;
+    }
+
+
+    // helper function to set the display for a card
+    function cardDisplay(cardNumber){
+        let card = "1";
+        switch (cardNumber) {
+            case 2:
+                card = "2";
+                break;
+            case 3:
+                card = "3";
+                break;
+            case 4:
+                card = "4";
+                break;
+            case 5:
+                card = "5";
+                break;
+            case 6:
+                card = "6";
                 break;
             case 7:
-                fifthCard = "7";
+                card = "7";
                 break;
             case 8:
-                fifthCard = "8";
+                card = "8";
                 break;
             case 9:
-                fifthCard = "9";
+                card = "9";
                 break;
             case 10:
-                fifthCard = "10";
+                card = "10";
                 break;
             case 11:
-                fifthCard = "J";
+                card = "J";
                 break;
             case 12:
-                fifthCard = "Q";
+                card = "Q";
                 break;
             case 13:
-                fifthCard = "K";
+                card = "K";
                 break;
             case 14:
-                fifthCard = "A";
+                card = "A";
                 break;
-            case 15:
-                fifthCard = "2";
-                break;
-            case 16:
-                fifthCard = "3";
-                break;
-            case 17:
-                fifthCard = "4";
-                break;
-            case 18:
-                fifthCard = "5";
-                break;
-            case 19:
-                fifthCard = "6";
-                break;
-            case 20:
-                fifthCard = "7";
-                break;
+            // case 15:
+            //     fifthCard = "2";
+            //     break;
+            // case 16:
+            //     fifthCard = "3";
+            //     break;
+            // case 17:
+            //     fifthCard = "4";
+            //     break;
+            // case 18:
+            //     fifthCard = "5";
+            //     break;
+            // case 19:
+            //     fifthCard = "6";
+            //     break;
+            // case 20:
+            //     fifthCard = "7";
+            //     break;
         }
-
-
-
-        fifthCard += ' of ';
-        fifthCard += fifthCardSuit;
-
-        document.getElementById("FifthCard").innerHTML = fifthCard;
-        document.getElementById("FifthCard").classList.remove("red");
-        if (fifthCardSuit === "hearts" || fifthCardSuit === "diamonds") {
-            document.getElementById("FifthCard").classList.add("red");
-        }
+        return card;
     }
+
 
     // returns 1, 2, 3, 4, 5, or 6 based on the order of the given cards
     function getDistance(alpha, beta, gamma) {
