@@ -13,7 +13,7 @@
     Playing Card Mind Reader
     </div>
     <div class="instructions grey">  
-    Draw five cards. Show me four and I predict the last!
+    Draw five cards. Show me four and I predict the last
     </div>
     <div id="cardForm">
         <div class="input" id="inputZero">
@@ -213,6 +213,25 @@
         return returnSuitString;
     }
 
+    // converts suit number to the corresponding suit card symbol
+    function suitDisplay(suitNumber) {
+        let suit = '';
+        switch (suitNumber) {
+            case 0:
+                suit = '&clubs;';
+                break;
+            case 1:
+                suit = "&diams;"
+                break;
+            case 2:
+                suit = '&hearts;'
+                break;
+            case 3:
+                suit = '&spades;'
+                break;
+        }
+        return suit;
+    }
 
     function getFifthCard() {
         let firstCardNumber = getCard(0);
@@ -349,10 +368,9 @@
                 break;
         }
 
-
-
         fifthCard += ' of ';
-        fifthCard += fifthCardSuit;
+        //fifthCard += fifthCardSuit;
+        fifthCard += suitDisplay(firstCardSuit);
 
         document.getElementById("FifthCard").innerHTML = fifthCard;
         document.getElementById("FifthCard").classList.remove("red");
