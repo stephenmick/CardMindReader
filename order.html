@@ -10,11 +10,11 @@
 
 <body>
     <div class="heading">
-    Card Mind Reader Orderer
+        Card Mind Reader Orderer
     </div>
-    <div class="instructions grey">  
-    Input five cards and I show how to order them for&nbsp;
-    <a href ="https://cardmindreader.com">CardMindReader</a>
+    <div class="instructions grey">
+        Input five cards and I show how to order them for&nbsp;
+        <a href="https://cardmindreader.com">CardMindReader</a>
     </div>
     <div id="cardForm">
         <div class="input" id="inputZero">
@@ -148,19 +148,19 @@
                 </div>
             </div>
 
-        <div class="instructions">
-            Arrange the order of cards this way ...
+            <div class="instructions">
+                Arrange the order of cards one of these ways ...
+            </div>
+            <div class="btn">
+                <input class="submit-button" type="submit" value="Arrange!" onClick="arrange()">
+            </div>
         </div>
-        <div class="btn">
-            <input class="submit-button" type="submit" value="Arrange!" onClick="arrange()">
-        </div>
-    </div>
-    <!-- <div class="answer">
+        <!-- <div class="answer">
         <h3 id="IntroText"></h3>
     </div> -->
-    <div class="answer">
-        <h2 id="solution"></h2>
-    </div>
+        <div class="answer">
+            <h2 id="solution"></h2>
+        </div>
 </body>
 
 <script>
@@ -296,6 +296,9 @@
             return;
         }
 
+        // initialize the solution display
+        solutionText = "";
+
         // initialize the card order
         let cardA = -1;
         let cardB = -1;
@@ -305,6 +308,43 @@
 
         // the distance between cardA and cardHidden will eventually be calculated as 1, 2, 3, 4, 5 or 6
         let distance = 0;
+
+        // varible for number of answers and array for storing multiple answers
+        let numberOfAnswers = -1;
+        let result = [
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            },
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            },
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            },
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            }
+        ]
 
         // first find two cards that have the same suit
         for (i = 0; i < 4; i++) {
@@ -339,141 +379,148 @@
                             distance = iNumber - jNumber + 13;
                         }
                     }
+                    numberOfAnswers += 1;
+                    // add the found cards to the result array
+                    result[numberOfAnswers].cardA = cardA;
+                    result[numberOfAnswers].cardHidden = cardHidden;
+                    result[numberOfAnswers].distance = distance;
+
                     console.log("cardA: " + cardArray[cardA] + " of " + suitArray[cardA]);
                     console.log("cardHidden: " + cardArray[cardHidden] + " of " + suitArray[cardHidden]);
                     // exit this part of the for loop
-                   j = 4;
+                    j = 4;
                 }
             }
         }
 
-        let b = -1;
-        let c = -1;
-        let d = -1;
+        // iterate through the possible answers, there will be 1, 2, 3, or 4 answers
+        for (h = 0; h <= numberOfAnswers; h++) {
 
-        // find the other 3 cards in the 5 card array
-        for (i = 0; i < 5; i++) {
-            if (i !== cardA && i !== cardHidden) {
-                if (b < 0) {
-                    b = i;
-                }
-                else if (c < 0) {
-                    c = i;
-                }
-                else {
-                    d = i;
+            let b = -1;
+            let c = -1;
+            let d = -1;
+
+            // find the other 3 cards in the 5 card array
+            for (i = 0; i < 5; i++) {
+                if (i !== result[h].cardA && i !== result[h].cardHidden) {
+                    if (b < 0) {
+                        b = i;
+                    }
+                    else if (c < 0) {
+                        c = i;
+                    }
+                    else {
+                        d = i;
+                    }
                 }
             }
-        }
-        console.log("****** cardA=" + cardA + " b=" + b + " c=" + c + " d=" + d + " cardHidden=" + cardHidden);
+            console.log("****** cardA=" + result[h].cardA + " b=" + b + " c=" + c + " d=" + d + " cardHidden=" + result[h].cardHidden);
 
-        // order by size, there are six different possibilities
-        let small = -1;
-        let middle = -1;
-        let large = -1;
-        if (valueArray[b] > valueArray[c] && valueArray[c] > valueArray[d]){
-            small = d;
-            middle = c;
-            large = b;
-        }
-        else if (valueArray[b] > valueArray[d] && valueArray[d] > valueArray[c]){
-            small = c;
-            middle = d;
-            large = b;
-        }
-        else if (valueArray[c] > valueArray[b] && valueArray[b] > valueArray[d]){
-            small = d;
-            middle = b;
-            large = c;
-        }
-        else if (valueArray[c] > valueArray[d] && valueArray[d] > valueArray[b]){
-            small = b;
-            middle = d;
-            large = c;
-        }
-        else if (valueArray[d] > valueArray[b] && valueArray[b] > valueArray[c]){
-            small = c;
-            middle = b;
-            large = d;
-        }
-        else {
-            small = b;
-            middle = c;
-            large = d;
-        }
-        console.log("small = " + small + " middle = " + middle + " large = " + large + " distance = " + distance);
-
-        // find the correct order of cardB cardC and cardD based on distance from cardA to cardHidden
-        switch (distance) {
-            case 1:
-                cardB = small;
-                cardC = middle;
-                cardD = large;
-                break;
-            case 2:
-                cardB = small;
-                cardC = large;
-                cardD = middle;
-                break;
-            case 3:
-                cardB = middle;
-                cardC = small;
-                cardD = large;
-                break;
-            case 4:
-                cardB = middle;
-                cardC = large;
-                cardD = small;
-                break;
-            case 5:
-                cardB = large;
-                cardC = small;
-                cardD = middle;
-                break;
-            case 6:
-                cardB = large;
-                cardC = middle;
-                cardD = small;
-                break;
-        }
-
-        console.log("first card: " + cardDisplay(cardArray[cardA]) + " of " + suitDisplay(suitArray[cardA]));
-        console.log("second card: " + cardDisplay(cardArray[cardB]) + " of " + suitDisplay(suitArray[cardB]));
-        console.log("third card: " + cardDisplay(cardArray[cardC]) + " of " + suitDisplay(suitArray[cardC]));
-        console.log("fourth card: " + cardDisplay(cardArray[cardD]) + " of " + suitDisplay(suitArray[cardD]));
-        console.log("hidden card: " + cardDisplay(cardArray[cardHidden]) + " of " + suitDisplay(suitArray[cardHidden]));
-
-        // display answer
-        solutionArray = [cardA, cardB, cardC, cardD, cardHidden];
-        solutionHeading = ["1st Card","2nd Card","3rd Card","4th Card","Hidden Card"];
-        solution = document.getElementById("solution");
-        solutionText = "";
-
-        for (i = 0; i < 5; i++) {
-            solutionText += solutionHeading[i] + ": ";
-            // use red text for cards that have a suit of hearts or diamonds
-            if (suitArray[solutionArray[i]] === 1 || suitArray[solutionArray[i]] === 2) {
-                solutionText += '<span style="color:red">';
+            // order by size, there are six different possibilities
+            let small = -1;
+            let middle = -1;
+            let large = -1;
+            if (valueArray[b] > valueArray[c] && valueArray[c] > valueArray[d]) {
+                small = d;
+                middle = c;
+                large = b;
+            }
+            else if (valueArray[b] > valueArray[d] && valueArray[d] > valueArray[c]) {
+                small = c;
+                middle = d;
+                large = b;
+            }
+            else if (valueArray[c] > valueArray[b] && valueArray[b] > valueArray[d]) {
+                small = d;
+                middle = b;
+                large = c;
+            }
+            else if (valueArray[c] > valueArray[d] && valueArray[d] > valueArray[b]) {
+                small = b;
+                middle = d;
+                large = c;
+            }
+            else if (valueArray[d] > valueArray[b] && valueArray[b] > valueArray[c]) {
+                small = c;
+                middle = b;
+                large = d;
             }
             else {
-                solutionText += '<span style="color:black">';
+                small = b;
+                middle = c;
+                large = d;
             }
-            solutionText += cardDisplay(cardArray[solutionArray[i]]) + " of " + suitDisplay(suitArray[solutionArray[i]]) + '</span>' + "<br>";
+            console.log("small = " + small + " middle = " + middle + " large = " + large + " distance = " + result[h].distance);
+
+            // find the correct order of cardB cardC and cardD based on distance from cardA to cardHidden
+            switch (result[h].distance) {
+                case 1:
+                    cardB = small;
+                    cardC = middle;
+                    cardD = large;
+                    break;
+                case 2:
+                    cardB = small;
+                    cardC = large;
+                    cardD = middle;
+                    break;
+                case 3:
+                    cardB = middle;
+                    cardC = small;
+                    cardD = large;
+                    break;
+                case 4:
+                    cardB = middle;
+                    cardC = large;
+                    cardD = small;
+                    break;
+                case 5:
+                    cardB = large;
+                    cardC = small;
+                    cardD = middle;
+                    break;
+                case 6:
+                    cardB = large;
+                    cardC = middle;
+                    cardD = small;
+                    break;
+            }
+
+            result[h].cardB = cardB;
+            result[h].cardC = cardC;
+            result[h].cardD = cardD;
+
+            console.log("first card: " + cardDisplay(cardArray[result[h].cardA]) + " of " + suitDisplay(suitArray[result[h].cardA]));
+            console.log("second card: " + cardDisplay(cardArray[result[h].cardB]) + " of " + suitDisplay(suitArray[result[h].cardB]));
+            console.log("third card: " + cardDisplay(cardArray[result[h].cardC]) + " of " + suitDisplay(suitArray[result[h].cardC]));
+            console.log("fourth card: " + cardDisplay(cardArray[result[h].cardD]) + " of " + suitDisplay(suitArray[result[h].cardD]));
+            console.log("hidden card: " + cardDisplay(cardArray[result[h].cardHidden]) + " of " + suitDisplay(suitArray[result[h].cardHidden]));
+
+            // display answer
+            solutionArray = [result[h].cardA, result[h].cardB, result[h].cardC, result[h].cardD, result[h].cardHidden];
+            solutionHeading = ["1st Card", "2nd Card", "3rd Card", "4th Card", "Hidden Card"];
+            solution = document.getElementById("solution");
+
+            for (i = 0; i < 5; i++) {
+                solutionText += solutionHeading[i] + ": ";
+                // use red text for cards that have a suit of hearts or diamonds
+                if (suitArray[solutionArray[i]] === 1 || suitArray[solutionArray[i]] === 2) {
+                    solutionText += '<span style="color:red">';
+                }
+                else {
+                    solutionText += '<span style="color:black">';
+                }
+                solutionText += cardDisplay(cardArray[solutionArray[i]]) + " of " + suitDisplay(suitArray[solutionArray[i]]) + '</span>' + "<br>";
+            }
+            solutionText += "----------------------" + "<br>";
+
         }
 
         solution.innerHTML = solutionText;
 
-        // fifthCard += ' of ';
-        // fifthCard += fifthCardSuit;
-
-        // document.getElementById("FifthCard").innerHTML = fifthCard;
-        // document.getElementById("FifthCard").classList.remove("red");
-        // if (fifthCardSuit === "hearts" || fifthCardSuit === "diamonds") {
-        //     document.getElementById("FifthCard").classList.add("red");
-        // }
     }
 
-    function suitDisplay(suitNumber){
+    function suitDisplay(suitNumber) {
         let suit = '';
         switch (suitNumber) {
             case 0:
@@ -494,7 +541,7 @@
 
 
     // helper function to set the display for a card
-    function cardDisplay(cardNumber){
+    function cardDisplay(cardNumber) {
         let card = "1";
         switch (cardNumber) {
             case 2:
@@ -678,7 +725,11 @@
         margin: 15px;
     }
 
-    #inputZero, #inputOne, #inputTwo, #inputThree, #inputFour{
+    #inputZero,
+    #inputOne,
+    #inputTwo,
+    #inputThree,
+    #inputFour {
         background-color: rgb(190, 225, 255);
     }
 
