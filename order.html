@@ -152,7 +152,7 @@
                 Arrange the order of cards one of these ways ...
             </div>
             <div class="instructions">
-                <span style="background-color:yellow">highlighted</span> cards remain in the same postion
+                <span style="background-color:yellow">highlighted</span>&nbsp;cards remain in the same postion
             </div>
             <div class="btn">
                 <input class="submit-button" type="submit" value="Arrange!" onClick="arrange()">
@@ -509,7 +509,7 @@
             solution = document.getElementById("solution");
 
             for (i = 0; i < 5; i++) {
-                solutionText += solutionHeading[i] + ": ";
+                solutionText += '<span style="color:rgb(100,100,100)"><small>' + solutionHeading[i] + ": </small></span>";
                 // use yellow highlight if the card is already in the proper position
                 let isHighlight = false;   
                 if (valueArray[i] === cardValue(cardArray[solutionArray[i]],suitArray[solutionArray[i]])){
@@ -660,7 +660,7 @@
 
 <style>
     a {
-        color: grey;
+        color: rgb(100,100,100);
     }
 
     body {
@@ -801,7 +801,7 @@
     }
 
     .grey {
-        color: grey;
+        color: rgb(100,100,100);
     }
 
     .submit-button {
@@ -811,7 +811,7 @@
     }
 
     .selected {
-        background-color: yellow;
+        background-color: lime;
     }
 </style>
 
