@@ -13,8 +13,9 @@
         Card Mind Reader Orderer
     </div>
     <div class="instructions grey">
-        Input five cards and I show how to order them for&nbsp;
-        <a href="https://cardmindreader.com">CardMindReader</a>
+        Input five cards and I show how to order them for
+    </div>
+    <div class="instructions grey"><a href="https://cardmindreader.com">CardMindReader</a>
     </div>
     <div id="cardForm">
         <div class="input" id="inputZero">
@@ -266,7 +267,7 @@
         // check that five card numbers and five suits are selected
         for (i = 0; i < 5; i++) {
             if (cardArray[i] < 2 || suitArray[i] === -1) {
-                window.alert("Please select four cards and suits")
+                window.alert("Please select four cards and suits");
                 i = 4;
                 abortFunction = true;
             }
@@ -317,8 +318,56 @@
         // initialize answer index, which will eventually be 0, 1, 2 or 3 depending on the number of answers
         let answerIndex = -1;   
         
-        // initialize the array for storing from one to four answer results
+        // initialize the array for storing from one to ten answer results
         let result = [
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            },
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            },
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            },
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            },
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            },
+            {
+                cardA: -1,
+                cardB: -1,
+                cardC: -1,
+                cardD: -1,
+                cardHidden: -1,
+                distance: 0
+            },
             {
                 cardA: -1,
                 cardB: -1,
@@ -392,15 +441,14 @@
                     result[answerIndex].cardHidden = cardHidden;
                     result[answerIndex].distance = distance;
 
-                    console.log("cardA: " + cardArray[cardA] + " of " + suitArray[cardA]);
-                    console.log("cardHidden: " + cardArray[cardHidden] + " of " + suitArray[cardHidden]);
-                    // exit this part of the for loop
-                    j = 4;
+                    //console.log("cardA: " + cardArray[cardA] + " of " + suitArray[cardA]);
+                    //console.log("cardHidden: " + cardArray[cardHidden] + " of " + suitArray[cardHidden]);
+
                 }
             }
         }
 
-        // iterate through the possible answers, there will be 1, 2, 3, or 4 answers
+        // iterate through the possible answers, there will be between one and ten answers
         for (h = 0; h <= answerIndex; h++) {
 
             let b = -1;
@@ -457,7 +505,7 @@
                 middle = c;
                 large = d;
             }
-            console.log("small = " + small + " middle = " + middle + " large = " + large + " distance = " + result[h].distance);
+            // console.log("small = " + small + " middle = " + middle + " large = " + large + " distance = " + result[h].distance);
 
             // find the correct order of cardB cardC and cardD based on distance from cardA to cardHidden
             switch (result[h].distance) {
@@ -561,7 +609,6 @@
         return suit;
     }
 
-
     // helper function to set the display for a card
     function cardDisplay(cardNumber) {
         let card = "1";
@@ -626,7 +673,6 @@
         }
         return card;
     }
-
 
     // returns 1, 2, 3, 4, 5, or 6 based on the order of the given cards
     function getDistance(alpha, beta, gamma) {
@@ -699,7 +745,6 @@
         }
     }
 
-
     /* for desktop */
     @media only screen and (min-width: 768px) {
         form {
@@ -744,7 +789,7 @@
         display: flex;
         justify-content: center;
         height: 20px;
-        margin: 15px;
+        margin: 10px;
     }
 
     #inputZero,
